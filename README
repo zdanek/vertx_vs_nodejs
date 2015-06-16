@@ -2,4 +2,24 @@ Vert.x v3 VS Node.js Benchmark
 
 Requires vert.x 3.x, node.js, ab (Apache Benchmark), nginx
 
+Add nginx proxy/balancer config to /etc/nginx/conf.d/
 
+Testing nodejs
+Run script
+
+serve_hello.sh 5001 8
+
+It will spawn 8 nodejs Http server instances on 8 different ports (5001 and further)
+
+Runch benchmarking
+
+ab -n 500000 -c 8 http://localhost:5000/
+
+
+Testing vert.x
+Run
+vertx HttpHelloServer.java -instances 8
+
+ab -n 500000 -c 8 http://localhost:5100/
+
+Compare the results!
